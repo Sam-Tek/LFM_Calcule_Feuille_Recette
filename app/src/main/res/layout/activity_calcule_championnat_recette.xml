@@ -1,0 +1,195 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#17249cff" >
+
+    <LinearLayout  android:layout_width="match_parent"
+        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:orientation="vertical"
+        tools:context="com.recette.lfm.lfmrecette.CalculeChampionnatRecetteActivity">
+
+        <TextView
+            android:text="@string/detailrecette"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextviewtitre"/>
+
+        <TextView
+            android:id="@+id/calnbticketTribune"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+        <TextView
+            android:id="@+id/calnbticketGradin"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+        <TextView
+            android:id="@+id/calnbticketPelouse"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+        <TextView
+            android:id="@+id/calnbspectateur"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calRecetteBrute"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calTaxeFiscale"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calMaisonFoot"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calEffortSolidarite"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calRecetteNette"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:text="@string/detailfrais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextviewtitre"/>
+        <TextView
+            android:id="@+id/calLocationTerrain"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calReserveStatutaire"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calCaisseSolidarite"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calFraisOrganisation"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calFraisEclairage"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calClubReceveur"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calClubVisiteur"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calFraisGeneraux"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calSoldeRepartir"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:text="@string/repartition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextviewtitre"/>
+        <TextView
+            android:id="@+id/calLigue"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+        <TextView
+            android:id="@+id/calRClubReceveur"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+        <TextView
+            android:id="@+id/calRClubVisiteur"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:text="@string/accusereception"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextviewtitre"/>
+
+        <TextView
+            android:id="@+id/calPartLFM"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calPartSolidarite"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+    </LinearLayout>
+</ScrollView>

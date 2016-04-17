@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.recette.lfm.lfmrecette" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ChampionnatActivity"
+            android:label="@string/title_activity_championnat"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.recette.lfm.lfmrecette.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CalculeChampionnatRecetteActivity"
+            android:label="@string/title_activity_calcule_championnat_recette"
+            android:parentActivityName=".ChampionnatActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.recette.lfm.lfmrecette.ChampionnatActivity" />
+        </activity>
+        <activity
+            android:name=".CoupeMartiniqueUnActivity"
+            android:label="@string/title_activity_coupe_martinique_un"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.recette.lfm.lfmrecette.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CalculeCoupeMartiniqueUnRecetteActivity"
+            android:label="@string/title_activity_calcule_coupe_martinique_un_recette"
+            android:parentActivityName=".CoupeMartiniqueUnActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.recette.lfm.lfmrecette.CoupeMartiniqueUnActivity" />
+        </activity>
+        <activity
+            android:name=".CoupeMartiniqueDeuxActivity"
+            android:label="@string/title_activity_coupe_martinique_deux"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.recette.lfm.lfmrecette.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CalculeCoupeMartiniqueDeuxRecetteActivity"
+            android:label="@string/title_activity_calcule_championnat_recette"
+            android:parentActivityName=".CoupeMartiniqueDeuxActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.recette.lfm.lfmrecette.CoupeMartiniqueDeuxActivity" />
+        </activity>
+        <activity
+            android:name=".CoupeFranceActivity"
+            android:label="@string/title_activity_coupe_france"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.recette.lfm.lfmrecette.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CalculeCoupeFranceActivity"
+            android:label="@string/title_activity_calcule_coupe_france"
+            android:parentActivityName=".CoupeFranceActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.recette.lfm.lfmrecette.CoupeFranceActivity" />
+        </activity>
+    </application>
+
+</manifest>
