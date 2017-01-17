@@ -161,11 +161,10 @@ public class CalculeCoupeMartiniqueUnRecetteActivity extends ActionBarActivity {
         TextView calLigue=(TextView) findViewById(R.id.calLigue);
         TextView calRClubReceveur=(TextView) findViewById(R.id.calRClubReceveur);
         TextView calRClubVisiteur=(TextView) findViewById(R.id.calRClubVisiteur);
+        TextView calRSolidarite=(TextView) findViewById(R.id.calRSolidarite);
+        TextView calFraisDelegue=(TextView) findViewById(R.id.calFraisDelegue);
         TextView calPartLFM=(TextView) findViewById(R.id.calPartLFM);
         TextView calPartSolidarite=(TextView) findViewById(R.id.calPartSolidarite);
-        TextView calFraisDelegue=(TextView) findViewById(R.id.calFraisDelegue);
-        TextView calRSolidarite=(TextView) findViewById(R.id.calRSolidarite);
-
 
         //modifier les textview *****************************************************************
         calnbticketTribune.setText(valeurnbticketTribune+" tickets Tribune à 9€ => "+NttTribune+"€");
@@ -185,13 +184,14 @@ public class CalculeCoupeMartiniqueUnRecetteActivity extends ActionBarActivity {
         calClubVisiteur.setText("Club visiteur :"+NvaleurClubVisiteur);
         calFraisGeneraux.setText("Frais généraux :"+NfraisGeneraux);
         calSoldeRepartir.setText("Solde à répartir :"+NsoldeRepartir);
+        calFraisDelegue.setText("Frais délégues :"+NvaleurFraisDelegue);
         calLigue.setText("Ligue 20% :"+NrepartitionLigue);
         calRClubReceveur.setText("Club Recevant 40%:"+NrepartitionClubRecevant);
         calRClubVisiteur.setText("Club Visiteur 20%:"+NrepartitionClubVisisteur);
+        calRSolidarite.setText("Solidarité 20%:"+NrepartitionSolidarite);
         calPartLFM.setText("Part LFM :"+NpartLFM);
-        calPartSolidarite.setText("Solidarité 20%:"+NpartSolidarite);
-        calFraisDelegue.setText("Frais délégues :"+NvaleurFraisDelegue);
-        calRSolidarite.setText("Solidarité :"+NrepartitionSolidarite);
+        calPartSolidarite.setText("Solidarité :"+NpartSolidarite);
+
 
     }
 
@@ -210,9 +210,9 @@ public class CalculeCoupeMartiniqueUnRecetteActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }

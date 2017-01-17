@@ -13,30 +13,97 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/styleTitrePage"/>
-            <EditText
-                android:id="@+id/nbticketTribune"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/infoticketTribune"
-                android:inputType="number"
-                style="@style/styleEditText"
-                />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/nbticketTribune"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/infoNbticket"
+                    android:inputType="number"
+                    android:layout_weight="1"
+                    style="@style/styleEditText"
+                    />
+                <TextView android:text="@string/infopageChampionnatTicketT"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/styleticketa"
+                    android:layout_weight="2"/>
+                <EditText
+                    android:id="@+id/prixticketTribune"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/infoprixticket"
+                    android:inputType="numberDecimal"
+                    android:layout_weight="1"
+                    style="@style/styleEditText"
+                    />
+            </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
             <EditText
                 android:id="@+id/nbticketGradin"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/infoticketGradin"
+                android:hint="@string/infoNbticket"
                 android:inputType="number"
+                android:layout_weight="1"
                 style="@style/styleEditText"
-            />
+                />
+            <TextView android:text="@string/infopageChampionnatTicketG"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/styleticketa"
+                android:layout_weight="2"/>
+            <EditText
+                android:id="@+id/prixticketGradin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/infoprixticket"
+                android:inputType="numberDecimal"
+                android:layout_weight="1"
+                style="@style/styleEditText"
+                />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
              <EditText
                  android:id="@+id/nbticketPelouse"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/infoticketPelouse"
+                android:hint="@string/infoNbticket"
                  android:inputType="number"
+                 android:layout_weight="1"
                  style="@style/styleEditText"
             />
+            <TextView android:text="@string/infopageChampionnatTicketP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/styleticketa"
+                android:layout_weight="2"/>
+            <EditText
+                android:id="@+id/prixticketPelouse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/infoprixticket"
+                android:inputType="numberDecimal"
+                android:layout_weight="1"
+                style="@style/styleEditText"
+                />
+        </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,23 +144,6 @@
             style="@style/styleEditText"
             />
 
-        <EditText
-            android:id="@+id/clubReceveur"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/clubReceveur"
-            android:inputType="numberDecimal"
-            style="@style/styleEditText"
-            />
-
-        <EditText
-            android:id="@+id/clubVisiteur"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/clubVisiteur"
-            android:inputType="numberDecimal"
-            style="@style/styleEditText"
-            />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

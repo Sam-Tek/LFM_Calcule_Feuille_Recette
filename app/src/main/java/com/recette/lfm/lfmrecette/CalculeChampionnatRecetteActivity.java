@@ -3,6 +3,7 @@ package com.recette.lfm.lfmrecette;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -15,7 +16,7 @@ import java.text.DecimalFormat;
 import static java.lang.String.*;
 
 
-public class CalculeChampionnatRecetteActivity extends ActionBarActivity {
+public class CalculeChampionnatRecetteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,26 +28,33 @@ public class CalculeChampionnatRecetteActivity extends ActionBarActivity {
         int stockcalcule;
         //recuperer donner de l ancien activity *******************************************************************************
         String valeurnbticketTribune=intent.getStringExtra(ChampionnatActivity.IDNBTICKETTRIBUNE);
+        String valeurprixticketTribune=intent.getStringExtra(ChampionnatActivity.IDPRIXTICKETTRIBUNE);
+
         String valeurnbticketGradin=intent.getStringExtra(ChampionnatActivity.IDNBTICKETGRADIN);
+        String valeurprixticketGradin=intent.getStringExtra(ChampionnatActivity.IDPRIXTICKETGRADIN);
+
         String valeurnbticketPelouse=intent.getStringExtra(ChampionnatActivity.IDNBTICKETPELOUSE);
+        String valeurprixticketPelouse=intent.getStringExtra(ChampionnatActivity.IDPRIXTICKETPELOUSE);
+
         String valeurLocationTerrain=intent.getStringExtra(ChampionnatActivity.IDLOCATIONTERRAIN);
         String valeurFraisEclairage=intent.getStringExtra(ChampionnatActivity.IDFRAISECLAIRAGE);
-        String valeurClubReceveur=intent.getStringExtra(ChampionnatActivity.IDCLUBRECEVEUR);
-        String valeurClubVisiteur=intent.getStringExtra(ChampionnatActivity.IDCLUBVISITEUR);
+
 
         //valeur string convertir **********************************************************************************************
         int NvaleurtkTribune=Integer.valueOf(valeurnbticketTribune);
+        Double NvaleurprixtkTribune=Double.valueOf(valeurprixticketTribune);
         int NvaleurtkGradin=Integer.valueOf(valeurnbticketGradin);
+        Double NvaleurprixtkGradin=Double.valueOf(valeurprixticketGradin);
         int NvaleurtkPelouse=Integer.valueOf(valeurnbticketPelouse);
+        Double NvaleurprixtkPelouse=Double.valueOf(valeurprixticketPelouse);
         int NvaleurLocationTerrain=Integer.valueOf(valeurLocationTerrain);
         Double NvaleurFraisEclairage=Double.valueOf(valeurFraisEclairage);
-        Double NvaleurClubReceveur=Double.valueOf(valeurClubReceveur);
-        Double NvaleurClubVisiteur=Double.valueOf(valeurClubVisiteur);
+
 
         //calcule pour obtenir la somme de chaque type de ticket******************************************************************
-        Double NttTribune = Double.valueOf(NvaleurtkTribune *9);
-        Double NttGradin= Double.valueOf(NvaleurtkGradin*7);
-        Double NttPelouse= Double.valueOf(NvaleurtkPelouse*6);
+        Double NttTribune = Double.valueOf(NvaleurtkTribune *NvaleurprixtkTribune);
+        Double NttGradin= Double.valueOf(NvaleurtkGradin*NvaleurprixtkGradin);
+        Double NttPelouse= Double.valueOf(NvaleurtkPelouse*NvaleurprixtkPelouse);
         NttTribune=Math.round(NttTribune*100.0)/100.0;
         NttGradin=Math.round(NttGradin*100.0)/100.0;
         NttPelouse=Math.round(NttPelouse*100.0)/100.0;
@@ -63,12 +71,8 @@ public class CalculeChampionnatRecetteActivity extends ActionBarActivity {
             NtaxeFiscale=(NrecetteImposable*8)/100;
             NtaxeFiscale=Math.round(NtaxeFiscale*100.0)/100.0;
         }
-        //maison du football
-        int Nmaisonfoot=1*NvaleurtkTribune;
-        //Effort solidarité
-        int NeffortSolidarite=1*Nnbspectateur;
         //Recette nette
-        Double NrecetteNette=NrecetteBrute-(NtaxeFiscale+Nmaisonfoot+NeffortSolidarite);
+        Double NrecetteNette=NrecetteBrute-NtaxeFiscale;
         NrecetteNette=Math.round(NrecetteNette*100.0)/100.0;
         //frais location terrain
         Double NfraisLocationTerrain=(NrecetteNette*NvaleurLocationTerrain)/100;
@@ -84,49 +88,37 @@ public class CalculeChampionnatRecetteActivity extends ActionBarActivity {
         NfraisOrganisation=Math.round(NfraisOrganisation*100.0)/100.0;
         //FRais généraux
         Double NfraisGeneraux=NfraisLocationTerrain+NfraisReserveStatutaire+NfraisCaisseSolidarite+
-                NfraisOrganisation+NvaleurFraisEclairage+NvaleurClubReceveur+NvaleurClubVisiteur;
+                NfraisOrganisation+NvaleurFraisEclairage;
         NfraisGeneraux=Math.round(NfraisGeneraux*100.0)/100.0;
         //Solde a répartir
         Double NsoldeRepartir=NrecetteNette-NfraisGeneraux;
         NsoldeRepartir=Math.round(NsoldeRepartir*100.0)/100.0;
-        //quand la recette est insufisente************************************
-        if (NsoldeRepartir<0){
-            NvaleurClubReceveur=Double.valueOf(0);
-            NvaleurClubVisiteur=Double.valueOf(0);
+        //quand la recette est insufisente**********************************
+        if (NvaleurFraisEclairage != 0 && NsoldeRepartir<0){
+            Double est=NrecetteNette-(NfraisLocationTerrain+NfraisReserveStatutaire+NfraisCaisseSolidarite+NfraisOrganisation);
+            est=Math.round(est*100.0)/100.0;
+            NvaleurFraisEclairage=est;
             NfraisGeneraux=NfraisLocationTerrain+NfraisReserveStatutaire+NfraisCaisseSolidarite+
-                    NfraisOrganisation+NvaleurFraisEclairage+NvaleurClubReceveur+NvaleurClubVisiteur;
+                    NfraisOrganisation+NvaleurFraisEclairage;
             NfraisGeneraux=Math.round(NfraisGeneraux*100.0)/100.0;
             NsoldeRepartir=NrecetteNette-NfraisGeneraux;
             NsoldeRepartir=Math.round(NsoldeRepartir*100.0)/100.0;
-            if (NvaleurFraisEclairage != 0 && NsoldeRepartir<0){
-                Double est=NrecetteNette-(NfraisLocationTerrain+NfraisReserveStatutaire+NfraisCaisseSolidarite+NfraisOrganisation);
-                est=Math.round(est*100.0)/100.0;
-                NvaleurFraisEclairage=est;
-                NfraisGeneraux=NfraisLocationTerrain+NfraisReserveStatutaire+NfraisCaisseSolidarite+
-                        NfraisOrganisation+NvaleurFraisEclairage+NvaleurClubReceveur+NvaleurClubVisiteur;
-                NfraisGeneraux=Math.round(NfraisGeneraux*100.0)/100.0;
-                NsoldeRepartir=NrecetteNette-NfraisGeneraux;
-                NsoldeRepartir=Math.round(NsoldeRepartir*100.0)/100.0;
-            }
         }
         //fin*****************************************************************
         //repartition ligue 25%
         Double NrepartitionLigue=(NsoldeRepartir*25)/100;
         NrepartitionLigue=SRtronquer(NrepartitionLigue);
-        //club recevant 50%
-        Double NrepartitionClubRecevant=(NsoldeRepartir*50)/100;
+        //club recevant 75%
+        Double NrepartitionClubRecevant=(NsoldeRepartir*75)/100;
         NrepartitionClubRecevant=SRtronquer(NrepartitionClubRecevant);
-        //club visiteur 25%
-        Double NrepartitionClubVisisteur=(NsoldeRepartir*25)/100;
-        NrepartitionClubVisisteur=SRtronquer(NrepartitionClubVisisteur);
         //resoudre le probleme de centime***********
-        Double centime=NsoldeRepartir-(NrepartitionLigue+NrepartitionClubRecevant+NrepartitionClubVisisteur);
+        Double centime=NsoldeRepartir-(NrepartitionLigue+NrepartitionClubRecevant);
         centime=Math.round(centime*100.0)/100.0;
         NrepartitionLigue=NrepartitionLigue+centime;
         NrepartitionLigue=Math.round(NrepartitionLigue*100.0)/100.0;
         //fin****************************************************
         //part lfm
-        Double NpartLFM=Nmaisonfoot+NeffortSolidarite+NfraisReserveStatutaire+NrepartitionLigue;
+        Double NpartLFM=NfraisReserveStatutaire+NrepartitionLigue;
         NpartLFM=Math.round(NpartLFM*100.0)/100.0;
         //Part solidarité
         Double NpartSolidarite=NfraisCaisseSolidarite;
@@ -142,16 +134,12 @@ public class CalculeChampionnatRecetteActivity extends ActionBarActivity {
         TextView calnbspectateur=(TextView) findViewById(R.id.calnbspectateur);
         TextView calRecetteBrute=(TextView) findViewById(R.id.calRecetteBrute);
         TextView calTaxeFiscale=(TextView) findViewById(R.id.calTaxeFiscale);
-        TextView calMaisonFoot=(TextView) findViewById(R.id.calMaisonFoot);
-        TextView calEffortSolidarite=(TextView) findViewById(R.id.calEffortSolidarite);
         TextView calRecetteNette=(TextView) findViewById(R.id.calRecetteNette);
         TextView calLocationTerrain=(TextView) findViewById(R.id.calLocationTerrain);
         TextView calReserveStatutaire=(TextView) findViewById(R.id.calReserveStatutaire);
         TextView calCaisseSolidarite=(TextView) findViewById(R.id.calCaisseSolidarite);
         TextView calFraisOrganisation=(TextView) findViewById(R.id.calFraisOrganisation);
         TextView calFraisEclairage=(TextView) findViewById(R.id.calFraisEclairage);
-        TextView calClubReceveur=(TextView) findViewById(R.id.calClubReceveur);
-        TextView calClubVisiteur=(TextView) findViewById(R.id.calClubVisiteur);
         TextView calFraisGeneraux=(TextView) findViewById(R.id.calFraisGeneraux);
         TextView calSoldeRepartir=(TextView) findViewById(R.id.calSoldeRepartir);
         TextView calLigue=(TextView) findViewById(R.id.calLigue);
@@ -162,29 +150,24 @@ public class CalculeChampionnatRecetteActivity extends ActionBarActivity {
 
 
         //modifier les textview *****************************************************************
-        calnbticketTribune.setText(valeurnbticketTribune+" tickets Tribune à 9€ => "+NttTribune+"€");
-        calnbticketGradin.setText(valeurnbticketGradin+" tickets Gradin à 7€ => "+ NttGradin+"€");
-        calnbticketPelouse.setText(valeurnbticketPelouse+" tickets Pelouse à 6€=> "+NttPelouse+"€");
+        calnbticketTribune.setText(valeurnbticketTribune+" tickets Tribune à "+valeurprixticketTribune+"€ => "+NttTribune+"€");
+        calnbticketGradin.setText(valeurnbticketGradin+" tickets Gradin à "+valeurprixticketGradin+"€ => "+ NttGradin+"€");
+        calnbticketPelouse.setText(valeurnbticketPelouse+" tickets Pelouse à "+valeurprixticketPelouse+"€=> "+NttPelouse+"€");
         calnbspectateur.setText(Nnbspectateur+" Spectateurs payants");
         calRecetteBrute.setText("RECETTE BRUTE : "+NrecetteBrute+"€");
         calTaxeFiscale.setText("Taxe Fiscale 8% :"+NtaxeFiscale+"€");
-        calMaisonFoot.setText("Maison du Football :"+Nmaisonfoot+"€");
-        calEffortSolidarite.setText("Effort Solidarité :"+NeffortSolidarite+"€");
         calRecetteNette.setText("Recette nette :"+NrecetteNette+"€");
         calLocationTerrain.setText("Location terrain "+NvaleurLocationTerrain+"% :"+NfraisLocationTerrain+"€");
         calReserveStatutaire.setText("Réserve Statutaire(10%) :"+NfraisReserveStatutaire+"€");
-        calCaisseSolidarite.setText("Caisse de Solidarité (15%) :"+NfraisCaisseSolidarite);
-        calFraisOrganisation.setText("Frais d'organisation (30%) :"+NfraisOrganisation);
-        calFraisEclairage.setText("Frais d'éclairage :"+NvaleurFraisEclairage);
-        calClubReceveur.setText("Club receveur :"+NvaleurClubReceveur);
-        calClubVisiteur.setText("Club visiteur :"+NvaleurClubVisiteur);
-        calFraisGeneraux.setText("Frais généraux :"+NfraisGeneraux);
-        calSoldeRepartir.setText("Solde à répartir :"+NsoldeRepartir);
-        calLigue.setText("Ligue 25% :"+NrepartitionLigue);
-        calRClubReceveur.setText("Club Recevant 50%:"+NrepartitionClubRecevant);
-        calRClubVisiteur.setText("Club Visiteur 25%:"+NrepartitionClubVisisteur);
-        calPartLFM.setText("Part LFM :"+NpartLFM);
-        calPartSolidarite.setText("Part Solidarité :"+NpartSolidarite);
+        calCaisseSolidarite.setText("Caisse de Solidarité (15%) :"+NfraisCaisseSolidarite+"€");
+        calFraisOrganisation.setText("Frais d'organisation (30%) :"+NfraisOrganisation+"€");
+        calFraisEclairage.setText("Frais d'éclairage :"+NvaleurFraisEclairage+"€");
+        calFraisGeneraux.setText("Frais généraux :"+NfraisGeneraux+"€");
+        calSoldeRepartir.setText("Solde à répartir :"+NsoldeRepartir+"€");
+        calLigue.setText("Ligue 25% :"+NrepartitionLigue+"€");
+        calRClubReceveur.setText("Club Recevant 75%:"+NrepartitionClubRecevant+"€");
+        calPartLFM.setText("Part LFM :"+NpartLFM+"€");
+        calPartSolidarite.setText("Part Solidarité :"+NpartSolidarite+"€");
 
     }
 
@@ -203,9 +186,10 @@ public class CalculeChampionnatRecetteActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+
+/*        if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }

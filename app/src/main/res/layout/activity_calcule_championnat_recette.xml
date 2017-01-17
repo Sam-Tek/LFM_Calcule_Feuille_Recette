@@ -59,20 +59,6 @@
             style="@style/styletextview"/>
 
         <TextView
-            android:id="@+id/calMaisonFoot"
-            android:text="..."
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/styletextview"/>
-
-        <TextView
-            android:id="@+id/calEffortSolidarite"
-            android:text="..."
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/styletextview"/>
-
-        <TextView
             android:id="@+id/calRecetteNette"
             android:text="..."
             android:layout_width="match_parent"
@@ -119,19 +105,6 @@
             android:layout_height="wrap_content"
             style="@style/styletextview"/>
 
-        <TextView
-            android:id="@+id/calClubReceveur"
-            android:text="..."
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/styletextview"/>
-
-        <TextView
-            android:id="@+id/calClubVisiteur"
-            android:text="..."
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/styletextview"/>
 
         <TextView
             android:id="@+id/calFraisGeneraux"
@@ -160,12 +133,6 @@
             style="@style/styletextview"/>
         <TextView
             android:id="@+id/calRClubReceveur"
-            android:text="..."
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/styletextview"/>
-        <TextView
-            android:id="@+id/calRClubVisiteur"
             android:text="..."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

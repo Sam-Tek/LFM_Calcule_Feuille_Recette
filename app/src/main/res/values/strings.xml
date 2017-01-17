@@ -13,9 +13,21 @@
     <string name="title_activity_championnat">Championnat</string>
     <string name="action_settings">Settings</string>
     <string name="infopageChampionnat">Entrez les informations pour calculer</string>
+
     <string name="infoticketTribune">Nombre de ticket Tribune</string>
     <string name="infoticketGradin">Nombre de ticket Gradin</string>
     <string name="infoticketPelouse">Nombre de ticket Pelouse</string>
+
+    <string name="infoprixticketTribune">Prix ticket Tribune</string>
+    <string name="infoprixticketGradin">Prix ticket Gradin</string>
+    <string name="infoprixticketPelouse">Prix ticket Pelouse</string>
+
+    <string name="infoNbticket">Nb</string>
+    <string name="infoprixticket">Prix</string>
+    <string name="infopageChampionnatTicketT">Tickets Tribune à</string>
+    <string name="infopageChampionnatTicketG">Tickets Gradin à</string>
+    <string name="infopageChampionnatTicketP">Tickets Pelouse à</string>
+
     <string name="locactionterrain">Location terrain</string>
     <string name="locactionterrain10">10%</string>
     <string name="locactionterrain15">15%</string>

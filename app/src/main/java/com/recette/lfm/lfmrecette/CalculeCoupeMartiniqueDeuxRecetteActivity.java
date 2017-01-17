@@ -183,9 +183,10 @@ public class CalculeCoupeMartiniqueDeuxRecetteActivity extends ActionBarActivity
         calLigue.setText("Ligue 20% :"+NrepartitionLigue);
         calRClubReceveur.setText("Club Recevant 30%:"+NrepartitionClubRecevant);
         calRClubVisiteur.setText("Club Visiteur 30%:"+NrepartitionClubVisisteur);
-        calPartSolidarite.setText("Solidarité 20%:"+NpartSolidarite);
+        calRSolidarite.setText("Solidarité 20%:"+NrepartitionSolidarite);
+        calPartSolidarite.setText("Solidarité :"+NpartSolidarite);
         calPartLFM.setText("Part LFM :"+NpartLFM);
-        calRSolidarite.setText("Solidarité :"+NrepartitionSolidarite);
+
     }
 
     @Override
@@ -203,9 +204,9 @@ public class CalculeCoupeMartiniqueDeuxRecetteActivity extends ActionBarActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
