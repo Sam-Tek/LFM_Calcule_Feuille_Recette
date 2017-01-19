@@ -13,8 +13,11 @@ import android.widget.Toast;
 
 public class CoupeMartiniqueUnActivity extends ActionBarActivity {
     public final static String IDNBTICKETTRIBUNE= "com.recette.lfm.lfmrecette.IDNBTICKETTRIBUNE";
+    public final static String IDPRIXTICKETTRIBUNE= "com.recette.lfm.lfmrecette.IDPRIXTICKETTRIBUNE";
     public final static String IDNBTICKETGRADIN= "com.recette.lfm.lfmrecette.IDNBTICKETGRADIN";
+    public final static String IDPRIXTICKETGRADIN= "com.recette.lfm.lfmrecette.IDPRIXTICKETGRADIN";
     public final static String IDNBTICKETPELOUSE= "com.recette.lfm.lfmrecette.IDNBTICKETPELOUSE";
+    public final static String IDPRIXTICKETPELOUSE= "com.recette.lfm.lfmrecette.IDPRIXTICKETPELOUSE";
     public final static String IDLOCATIONTERRAIN= "com.recette.lfm.lfmrecette.IDLOCATIONTERRAIN";
     public final static String IDFRAISECLAIRAGE= "com.recette.lfm.lfmrecette.IDFRAISECLAIRAGE";
     public final static String IDCLUBRECEVEUR= "com.recette.lfm.lfmrecette.IDCLUBRECEVEUR";
@@ -58,8 +61,11 @@ public class CoupeMartiniqueUnActivity extends ActionBarActivity {
         Intent intent = new Intent(this,CalculeCoupeMartiniqueUnRecetteActivity.class);
         //recuperer les edittext
         EditText nbticketTribune=(EditText) findViewById(R.id.nbticketTribune);
+        EditText prixticketTribune=(EditText) findViewById(R.id.prixticketTribune);
         EditText nbticketGradin=(EditText) findViewById(R.id.nbticketGradin);
+        EditText prixticketGradin=(EditText) findViewById(R.id.prixticketGradin);
         EditText nbticketPelouse=(EditText) findViewById(R.id.nbticketPelouse);
+        EditText prixticketPelouse=(EditText) findViewById(R.id.prixticketPelouse);
         EditText fraiseclairage =(EditText) findViewById(R.id.fraisEclairage);
         EditText clubreceveur=(EditText) findViewById(R.id.clubReceveur);
         EditText clubvisiteur=(EditText) findViewById(R.id.clubVisiteur);
@@ -81,6 +87,21 @@ public class CoupeMartiniqueUnActivity extends ActionBarActivity {
         }else {
             ok=false;
         }
+
+        //verifier si le champ prix tribune est vide ou trop gros
+        if (prixticketTribune.getText().toString().length() < 10){
+            String valeurprixticketTribune;
+            if (prixticketTribune.getText().toString().length() > 0){
+                valeurprixticketTribune= prixticketTribune.getText().toString();
+            }else{
+                valeurprixticketTribune="0";
+            }
+            //inserer les valeurs des edittext dans le intent pour la vue suivante
+            intent.putExtra(IDPRIXTICKETTRIBUNE, valeurprixticketTribune);
+        }else {
+            ok=false;
+        }
+
         //verifier si les champs sont vides ou trop gros
         if (nbticketGradin.getText().toString().length() < 10) {
             String valeurnbticketGradin;
@@ -96,6 +117,23 @@ public class CoupeMartiniqueUnActivity extends ActionBarActivity {
         }else {
             ok=false;
         }
+
+        //verifier si les champs sont vides ou trop gros
+        if (prixticketGradin.getText().toString().length() < 10) {
+            String valeurprixticketGradin;
+            if (prixticketGradin.getText().toString().length()>0){
+                //recuperer la valeur du edittext
+                valeurprixticketGradin = prixticketGradin.getText().toString();
+            }else{
+                valeurprixticketGradin="0";
+            }
+
+            //inserer les valeurs des edittext dans le intent pour la vue suivante
+            intent.putExtra(IDPRIXTICKETGRADIN,valeurprixticketGradin);
+        }else {
+            ok=false;
+        }
+
         //verifier si les champs sont vides ou trop gros
         if (nbticketPelouse.getText().toString().length() < 10) {
             String valeurnbticketPelouse;
@@ -109,6 +147,23 @@ public class CoupeMartiniqueUnActivity extends ActionBarActivity {
 
             //inserer les valeurs des edittext dans le intent pour la vue suivante
             intent.putExtra(IDNBTICKETPELOUSE, valeurnbticketPelouse);
+        }else{
+            ok=false;
+        }
+
+        //verifier si les champs sont vides ou trop gros
+        if (prixticketPelouse.getText().toString().length() < 10) {
+            String valeurprixticketPelouse;
+            //verifier si c vide par defaut c = a 0
+            if (prixticketPelouse.getText().toString().length()>0){
+                //recuperer la valeur du edittext
+                valeurprixticketPelouse = prixticketPelouse.getText().toString();
+            }else{
+                valeurprixticketPelouse="0";
+            }
+
+            //inserer les valeurs des edittext dans le intent pour la vue suivante
+            intent.putExtra(IDPRIXTICKETPELOUSE, valeurprixticketPelouse);
         }else{
             ok=false;
         }

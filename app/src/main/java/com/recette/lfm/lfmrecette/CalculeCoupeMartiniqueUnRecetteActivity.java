@@ -3,6 +3,7 @@ package com.recette.lfm.lfmrecette;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -14,7 +15,7 @@ import java.text.DecimalFormat;
 import static java.lang.String.*;
 
 
-public class CalculeCoupeMartiniqueUnRecetteActivity extends ActionBarActivity {
+public class CalculeCoupeMartiniqueUnRecetteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +27,14 @@ public class CalculeCoupeMartiniqueUnRecetteActivity extends ActionBarActivity {
         int stockcalcule;
         //recuperer donner de l ancien activity *******************************************************************************
         String valeurnbticketTribune=intent.getStringExtra(CoupeMartiniqueUnActivity.IDNBTICKETTRIBUNE);
+        String valeurprixticketTribune=intent.getStringExtra(ChampionnatActivity.IDPRIXTICKETTRIBUNE);
+
         String valeurnbticketGradin=intent.getStringExtra(CoupeMartiniqueUnActivity.IDNBTICKETGRADIN);
+        String valeurprixticketGradin=intent.getStringExtra(ChampionnatActivity.IDPRIXTICKETGRADIN);
+
         String valeurnbticketPelouse=intent.getStringExtra(CoupeMartiniqueUnActivity.IDNBTICKETPELOUSE);
+        String valeurprixticketPelouse=intent.getStringExtra(ChampionnatActivity.IDPRIXTICKETPELOUSE);
+
         String valeurLocationTerrain=intent.getStringExtra(CoupeMartiniqueUnActivity.IDLOCATIONTERRAIN);
         String valeurFraisEclairage=intent.getStringExtra(CoupeMartiniqueUnActivity.IDFRAISECLAIRAGE);
         String valeurClubReceveur=intent.getStringExtra(CoupeMartiniqueUnActivity.IDCLUBRECEVEUR);
@@ -36,8 +43,14 @@ public class CalculeCoupeMartiniqueUnRecetteActivity extends ActionBarActivity {
 
         //valeur string convertir **********************************************************************************************
         int NvaleurtkTribune=Integer.valueOf(valeurnbticketTribune);
+        Double NvaleurprixtkTribune=Double.valueOf(valeurprixticketTribune);
+
         int NvaleurtkGradin=Integer.valueOf(valeurnbticketGradin);
+        Double NvaleurprixtkGradin=Double.valueOf(valeurprixticketGradin);
+
         int NvaleurtkPelouse=Integer.valueOf(valeurnbticketPelouse);
+        Double NvaleurprixtkPelouse=Double.valueOf(valeurprixticketPelouse);
+
         int NvaleurLocationTerrain=Integer.valueOf(valeurLocationTerrain);
         Double NvaleurFraisEclairage=Double.valueOf(valeurFraisEclairage);
         Double NvaleurClubReceveur=Double.valueOf(valeurClubReceveur);
@@ -45,9 +58,9 @@ public class CalculeCoupeMartiniqueUnRecetteActivity extends ActionBarActivity {
         Double NvaleurFraisDelegue=Double.valueOf(valeurFraisDelegue);
 
         //calcule pour obtenir la somme de chaque type de ticket******************************************************************
-        Double NttTribune = Double.valueOf(NvaleurtkTribune *9);
-        Double NttGradin= Double.valueOf(NvaleurtkGradin*7);
-        Double NttPelouse= Double.valueOf(NvaleurtkPelouse*6);
+        Double NttTribune = Double.valueOf(NvaleurtkTribune *NvaleurprixtkTribune);
+        Double NttGradin= Double.valueOf(NvaleurtkGradin*NvaleurprixtkGradin);
+        Double NttPelouse= Double.valueOf(NvaleurtkPelouse*NvaleurprixtkPelouse);
         NttTribune=Math.round(NttTribune*100.0)/100.0;
         NttGradin=Math.round(NttGradin*100.0)/100.0;
         NttPelouse=Math.round(NttPelouse*100.0)/100.0;
@@ -167,9 +180,9 @@ public class CalculeCoupeMartiniqueUnRecetteActivity extends ActionBarActivity {
         TextView calPartSolidarite=(TextView) findViewById(R.id.calPartSolidarite);
 
         //modifier les textview *****************************************************************
-        calnbticketTribune.setText(valeurnbticketTribune+" tickets Tribune à 9€ => "+NttTribune+"€");
-        calnbticketGradin.setText(valeurnbticketGradin+" tickets Gradin à 7€ => "+ NttGradin+"€");
-        calnbticketPelouse.setText(valeurnbticketPelouse+" tickets Pelouse à 6€=> "+NttPelouse+"€");
+        calnbticketTribune.setText(valeurnbticketTribune+" tickets Tribune à "+valeurprixticketTribune+"€ => "+NttTribune+"€");
+        calnbticketGradin.setText(valeurnbticketGradin+" tickets Gradin à "+valeurprixticketGradin+"€ => "+ NttGradin+"€");
+        calnbticketPelouse.setText(valeurnbticketPelouse+" tickets Pelouse à "+valeurprixticketPelouse+"€=> "+NttPelouse+"€");
         calnbspectateur.setText(Nnbspectateur+" Spectateurs payants");
         calRecetteBrute.setText("RECETTE BRUTE : "+NrecetteBrute+"€");
         calTaxeFiscale.setText("Taxe Fiscale 8% :"+NtaxeFiscale+"€");
