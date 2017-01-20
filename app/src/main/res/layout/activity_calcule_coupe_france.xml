@@ -59,18 +59,19 @@
             style="@style/styletextview"/>
 
         <TextView
-            android:id="@+id/calMaisonFoot"
+            android:id="@+id/calEffortSolidarite"
             android:text="..."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/styletextview"/>
 
         <TextView
-            android:id="@+id/calEffortSolidarite"
+            android:id="@+id/calMaisonFoot"
             android:text="..."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/styletextview"/>
+
 
         <TextView
             android:id="@+id/calRecetteNette"
@@ -152,6 +153,13 @@
 
         <TextView
             android:id="@+id/calSoldeRepartir"
+            android:text="..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/styletextview"/>
+
+        <TextView
+            android:id="@+id/calTotalEgalRecetteNette"
             android:text="..."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

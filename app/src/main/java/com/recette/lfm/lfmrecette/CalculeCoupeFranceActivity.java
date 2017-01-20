@@ -3,12 +3,13 @@ package com.recette.lfm.lfmrecette;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 
-public class CalculeCoupeFranceActivity extends ActionBarActivity {
+public class CalculeCoupeFranceActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +21,14 @@ public class CalculeCoupeFranceActivity extends ActionBarActivity {
         int stockcalcule;
         //recuperer donner de l ancien activity *******************************************************************************
         String valeurnbticketTribune=intent.getStringExtra(CoupeFranceActivity.IDNBTICKETTRIBUNE);
+        String valeurprixticketTribune=intent.getStringExtra(ChampionnatActivity.IDPRIXTICKETTRIBUNE);
+
         String valeurnbticketGradin=intent.getStringExtra(CoupeFranceActivity.IDNBTICKETGRADIN);
+        String valeurprixticketGradin=intent.getStringExtra(ChampionnatActivity.IDPRIXTICKETGRADIN);
+
         String valeurnbticketPelouse=intent.getStringExtra(CoupeFranceActivity.IDNBTICKETPELOUSE);
+        String valeurprixticketPelouse=intent.getStringExtra(ChampionnatActivity.IDPRIXTICKETPELOUSE);
+
         String valeurLocationTerrain=intent.getStringExtra(CoupeFranceActivity.IDLOCATIONTERRAIN);
         String valeurFraisEclairage=intent.getStringExtra(CoupeFranceActivity.IDFRAISECLAIRAGE);
         String valeurClubReceveur=intent.getStringExtra(CoupeFranceActivity.IDCLUBRECEVEUR);
@@ -32,8 +39,14 @@ public class CalculeCoupeFranceActivity extends ActionBarActivity {
 
               //valeur string convertir **********************************************************************************************
         int NvaleurtkTribune=Integer.valueOf(valeurnbticketTribune);
+        Double NvaleurprixtkTribune=Double.valueOf(valeurprixticketTribune);
+
         int NvaleurtkGradin=Integer.valueOf(valeurnbticketGradin);
+        Double NvaleurprixtkGradin=Double.valueOf(valeurprixticketGradin);
+
         int NvaleurtkPelouse=Integer.valueOf(valeurnbticketPelouse);
+        Double NvaleurprixtkPelouse=Double.valueOf(valeurprixticketPelouse);
+
         int NvaleurLocationTerrain=Integer.valueOf(valeurLocationTerrain);
         Double NvaleurFraisEclairage=Double.valueOf(valeurFraisEclairage);
         Double NvaleurClubReceveur=Double.valueOf(valeurClubReceveur);
@@ -43,9 +56,9 @@ public class CalculeCoupeFranceActivity extends ActionBarActivity {
         Double NvaleurFraisArbitreAssistant=Double.valueOf(valeurFraisArbitreAssistant);
 
         //calcule pour obtenir la somme de chaque type de ticket******************************************************************
-        Double NttTribune = Double.valueOf(NvaleurtkTribune *9);
-        Double NttGradin= Double.valueOf(NvaleurtkGradin*7);
-        Double NttPelouse= Double.valueOf(NvaleurtkPelouse*6);
+        Double NttTribune = Double.valueOf(NvaleurtkTribune *NvaleurprixtkTribune);
+        Double NttGradin= Double.valueOf(NvaleurtkGradin*NvaleurprixtkGradin);
+        Double NttPelouse= Double.valueOf(NvaleurtkPelouse*NvaleurprixtkPelouse);
         NttTribune=Math.round(NttTribune*100.0)/100.0;
         NttGradin=Math.round(NttGradin*100.0)/100.0;
         NttPelouse=Math.round(NttPelouse*100.0)/100.0;
@@ -154,6 +167,7 @@ public class CalculeCoupeFranceActivity extends ActionBarActivity {
         TextView calClubVisiteur=(TextView) findViewById(R.id.calClubVisiteur);
         TextView calFraisGeneraux=(TextView) findViewById(R.id.calFraisGeneraux);
         TextView calSoldeRepartir=(TextView) findViewById(R.id.calSoldeRepartir);
+        TextView calTotalEgalRecetteNette=(TextView) findViewById(R.id.calTotalEgalRecetteNette);
         TextView calLigue=(TextView) findViewById(R.id.calLigue);
         TextView calRClubReceveur=(TextView) findViewById(R.id.calRClubReceveur);
         TextView calRClubVisiteur=(TextView) findViewById(R.id.calRClubVisiteur);
@@ -162,14 +176,14 @@ public class CalculeCoupeFranceActivity extends ActionBarActivity {
 
 
         //modifier les textview *****************************************************************
-        calnbticketTribune.setText(valeurnbticketTribune+" tickets Tribune à 9€ => "+NttTribune+"€");
-        calnbticketGradin.setText(valeurnbticketGradin+" tickets Gradin à 7€ => "+ NttGradin+"€");
-        calnbticketPelouse.setText(valeurnbticketPelouse+" tickets Pelouse à 6€=> "+NttPelouse+"€");
-        calnbspectateur.setText(Nnbspectateur+" Spectateurs payants");
-        calRecetteBrute.setText("RECETTE BRUTE : "+NrecetteBrute+"€");
+        calnbticketTribune.setText(valeurnbticketTribune+" tickets Tribune à "+valeurprixticketTribune+"€ => "+NttTribune+"€");
+        calnbticketGradin.setText(valeurnbticketGradin+" tickets Gradin à "+valeurprixticketGradin+"€ => "+ NttGradin+"€");
+        calnbticketPelouse.setText(valeurnbticketPelouse+" tickets Pelouse à "+valeurprixticketPelouse+"€=> "+NttPelouse+"€");
+        calnbspectateur.setText(Nnbspectateur+" TOTAL SPECTATEURS");
+        calRecetteBrute.setText("Recette brute : "+NrecetteBrute+"€");
         calTaxeFiscale.setText("Taxe Fiscale 8% :"+NtaxeFiscale+"€");
-        calMaisonFoot.setText("Maison du Football :"+Nmaisonfoot+"€");
-        calEffortSolidarite.setText("Effort Solidarité :"+NeffortSolidarite+"€");
+        calEffortSolidarite.setText("EFFORT SOLIDARITE :"+NeffortSolidarite+"€");
+        calMaisonFoot.setText("Nbre Ticket Tribune x1 :"+Nmaisonfoot+"€");
         calRecetteNette.setText("Recette nette :"+NrecetteNette+"€");
         calLocationTerrain.setText("Location terrain "+NvaleurLocationTerrain+"% :"+NfraisLocationTerrain+"€");
         calFraisOrganisation.setText("Frais d'organisation (10%) :"+NfraisOrganisation);
@@ -179,8 +193,9 @@ public class CalculeCoupeFranceActivity extends ActionBarActivity {
         calFraisEclairage.setText("Frais d'éclairage :"+NvaleurFraisEclairage);
         calClubReceveur.setText("Club receveur :"+NvaleurClubReceveur);
         calClubVisiteur.setText("Club visiteur :"+NvaleurClubVisiteur);
-        calFraisGeneraux.setText("Frais généraux :"+NfraisGeneraux);
-        calSoldeRepartir.setText("Solde à répartir :"+NsoldeRepartir);
+        calFraisGeneraux.setText("Total des dépenses :"+NfraisGeneraux);
+        calSoldeRepartir.setText("Balance: Somme à répartir :"+NsoldeRepartir);
+        calTotalEgalRecetteNette.setText("Total égale à la recette nette :"+NrecetteNette);
         calLigue.setText("Ligue 20% :"+NrepartitionLigue);
         calRClubReceveur.setText("Club Recevant 40%:"+NrepartitionClubRecevant);
         calRClubVisiteur.setText("Club Visiteur 40%:"+NrepartitionClubVisisteur);

@@ -3,6 +3,7 @@ package com.recette.lfm.lfmrecette;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 
-public class CoupeMartiniqueUnActivity extends ActionBarActivity {
+public class CoupeMartiniqueUnActivity extends AppCompatActivity {
     public final static String IDNBTICKETTRIBUNE= "com.recette.lfm.lfmrecette.IDNBTICKETTRIBUNE";
     public final static String IDPRIXTICKETTRIBUNE= "com.recette.lfm.lfmrecette.IDPRIXTICKETTRIBUNE";
 
